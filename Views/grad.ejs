@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        #map {
+            width: 1619px;
+            height: 827px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/Indian_States_0.js"></script>
+        <script src="data/Graduates_1.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+            highlightLayer.openPopup();
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[17.556129055867807,56.16017984413373],[33.2261650686073,86.87345042910314]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_Indian_States_0(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['st_nm'] !== null ? autolinker.link(feature.properties['st_nm'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Indian_States_0_0() {
+            return {
+                pane: 'pane_Indian_States_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Indian_States_0');
+        map.getPane('pane_Indian_States_0').style.zIndex = 400;
+        map.getPane('pane_Indian_States_0').style['mix-blend-mode'] = 'normal';
+        var layer_Indian_States_0 = new L.geoJson(json_Indian_States_0, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Indian_States_0',
+            layerName: 'layer_Indian_States_0',
+            pane: 'pane_Indian_States_0',
+            onEachFeature: pop_Indian_States_0,
+            style: style_Indian_States_0_0,
+        });
+        bounds_group.addLayer(layer_Indian_States_0);
+        map.addLayer(layer_Indian_States_0);
+        function pop_Graduates_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['NAME_OF_CI'] !== null ? autolinker.link(feature.properties['NAME_OF_CI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">State</th>\
+                        <td>' + (feature.properties['STATE_NAME'] !== null ? autolinker.link(feature.properties['STATE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Graduates</th>\
+                        <td>' + (feature.properties['TOTAL_GRAD'] !== null ? autolinker.link(feature.properties['TOTAL_GRAD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Male Graduates</th>\
+                        <td>' + (feature.properties['MALE_GRADU'] !== null ? autolinker.link(feature.properties['MALE_GRADU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Female Graduates</th>\
+                        <td>' + (feature.properties['FEMALE_GRA'] !== null ? autolinker.link(feature.properties['FEMALE_GRA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Graduates_1_0(feature) {
+            if (feature.properties['TOTAL_GRAD'] >= 2532.000000 && feature.properties['TOTAL_GRAD'] <= 10846.400000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 3.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(43,131,186,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['TOTAL_GRAD'] >= 10846.400000 && feature.properties['TOTAL_GRAD'] <= 13783.400000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 3.6,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(100,171,176,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['TOTAL_GRAD'] >= 13783.400000 && feature.properties['TOTAL_GRAD'] <= 16811.400000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 3.8,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(157,211,167,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['TOTAL_GRAD'] >= 16811.400000 && feature.properties['TOTAL_GRAD'] <= 19903.200000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(199,233,173,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['TOTAL_GRAD'] >= 19903.200000 && feature.properties['TOTAL_GRAD'] <= 23959.000000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,248,185,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['TOTAL_GRAD'] >= 23959.000000 && feature.properties['TOTAL_GRAD'] <= 29812.000000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,237,170,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['TOTAL_GRAD'] >= 29812.000000 && feature.properties['TOTAL_GRAD'] <= 39109.400000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 4.8,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,201,128,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['TOTAL_GRAD'] >= 39109.400000 && feature.properties['TOTAL_GRAD'] <= 60686.800000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 5.2,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(249,158,89,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['TOTAL_GRAD'] >= 60686.800000 && feature.properties['TOTAL_GRAD'] <= 129560.000000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 5.6,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,91,58,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['TOTAL_GRAD'] >= 129560.000000 && feature.properties['TOTAL_GRAD'] <= 2221137.000000 ) {
+                return {
+                pane: 'pane_Graduates_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,25,28,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Graduates_1');
+        map.getPane('pane_Graduates_1').style.zIndex = 401;
+        map.getPane('pane_Graduates_1').style['mix-blend-mode'] = 'normal';
+        var layer_Graduates_1 = new L.geoJson(json_Graduates_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Graduates_1',
+            layerName: 'layer_Graduates_1',
+            pane: 'pane_Graduates_1',
+            onEachFeature: pop_Graduates_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Graduates_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Graduates_1);
+        map.addLayer(layer_Graduates_1);
+        setBounds();
+        var i = 0;
+        layer_Graduates_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['NAME_OF_CI'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['NAME_OF_CI']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Graduates_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_Graduates_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Graduates_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Graduates_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Graduates_1]);
+        });
+        </script>
+    </body>
+</html>

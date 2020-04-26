@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>City Analysis</title>
+    <style>
+    #jumbo
+      {
+        background-color: #f4511e;
+        color: white;
+      }
+
+    #but
+    {
+      border: 1px solid #f4511e;
+      background-color: #fff !important;
+      color: black;
+    }
+
+    #but:hover
+    {
+      color: #f4511e;
+    }
+
+    .container-fluid 
+    {
+      padding: 60px 50px;
+    }
+
+    .navbar 
+  {
+  margin-bottom: 0;
+  padding-bottom: 0%;
+  background-color:#f4511e;
+  z-index: 9999;
+  border: 0;
+  font-size: 12px !important;
+  line-height: 1.42857143 !important;
+  border-radius: 0;
+  }
+
+.navbar li a, .navbar .navbar-brand 
+{
+  color: black !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a 
+{
+  color: #f4511e !important;
+  background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default" id="top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">City Analysis</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" class="active">HOME</a></li>
+              <li><a href="/maps">MAPS</a></li>
+              <li><a href="/about">ABOUT US</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="jumbotron text-center" id="jumbo">
+        <h1>Welcome to City Analysis!</h1>
+        <p>We are the one-stop solution for census data maps of Indian cities!</p>
+        <a href="/maps" class="btn btn-default" role="button" id="but">View maps</a>
+    </div>
+    <div class="container-fluid text-center" style="color:#f4511e;">
+        <h2>View Data in maps</h2>
+        <h4>For better visualization of the data, we have presented analysis of the census data in maps.</h4>
+        <h4>For different category of the census data, different maps have been made, so viewers can see separate analysis for each type.</h4>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "city-analysis",
+  "version": "1.0.0",
+  "description": "A project for representation of urban census data with maps",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^3.1.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/tejasba2000/city-analysis.git"
+  },
+  "author": "SY B.Tech. IT Batch A Group 5",
+  "license": "ISC"
+}

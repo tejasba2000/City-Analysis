@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>maps</title>
+    <style>
+           .panel {
+  border: 1px solid #f4511e;
+  border-radius:0;
+  transition: box-shadow 0.5s;
+}
+
+.panel:hover {
+  box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.panel .btn:hover {
+  border: 1px solid #f4511e;
+  background-color: #fff !important;
+  color: #f4511e;
+}
+
+.panel-heading {
+  color: #fff !important;
+  background-color: #f4511e !important;
+  padding: 25px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.panel .btn {
+  margin: 15px 0;
+  background-color: #f4511e;
+  color: #fff;
+}
+
+.navbar 
+  {
+  margin-bottom: 0;
+  padding-bottom: 0%;
+  background-color:#f4511e;
+  z-index: 9999;
+  border: 0;
+  font-size: 12px !important;
+  line-height: 1.42857143 !important;
+  border-radius: 0;
+  }
+
+.navbar li a, .navbar .navbar-brand 
+{
+  color: black !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a 
+{
+  color: #f4511e !important;
+  background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./homepage.html">City Analysis</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/">HOME</a></li>
+              <li><a href="#" class="active">MAPS</a></li>
+              <li><a href="/about">ABOUT US</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container-fluid text-center">
+        <h2>Categories in maps</h2>
+        <h4>We have created maps for following categories:</h4>
+        <br>
+        <div class="row">      
+          <div class="col-sm-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading"><h4>POPULATION</h4></div>
+                <div class="panel-body">
+            <p>Shows analysis based on overall population of the city.</p>
+            <a href="/population" class="btn btn-primary" role="button">View map</a>
+            </div>
+            </div>
+            </div>
+          <div class="col-sm-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading"><h4>LITERATES</h4></div>
+                <div class="panel-body">
+                    <p>Shows analysis about no. of literates.</p>
+                    <a href="/literates" class="btn btn-primary" role="button">View map</a>
+            </div>
+            </div>
+            </div>
+          <div class="col-sm-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading"><h4>GRADUATES</h4></div>
+                <div class="panel-body">
+            <p>Shows analysis about no. of graduates.</p>
+            <a href="/graduates" class="btn btn-primary" role="button">View map</a>
+            </div>
+            </div>
+            </div>
+            </div>
+          <br><br>
+        <div class="row">
+            <div class="col-sm-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading"><h4>SEX RATIO</h4></div>
+                <div class="panel-body">
+            <p>Shows analysis about sex ratio.</p>
+            <a href="/sexratio" class="btn btn-primary" role="button">View map</a>
+            </div>
+            </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading"><h4>LITERACY RATE</h4></div>
+                <div class="panel-body">
+            <p>Shows analysis on effective literacy rate rather than no. of literates.</p>
+            <a href="/literacyrate" class="btn btn-primary" role="button">View map</a>
+            </div>
+            </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading"><h4>CHILD POPULATION</h4></div>
+                <div class="panel-body">
+            <p>Shows population under 6 years of age.</p>
+            <a href="/childpopulation" class="btn btn-primary" role="button">View map</a>
+            </div>
+            </div>
+            </div>
+      </div>
+      </div>
+</body>
+</html>
